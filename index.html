@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Date Night Cinema Reviews</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+  .tab { overflow: hidden; border: 1px solid #ccc; background-color: #f1f1f1; }
+  .tab button { background-color: inherit; float: left; border: none; outline: none; cursor: pointer; padding: 14px 16px; transition: 0.3s; font-size: 17px; }
+  .tab button:hover { background-color: #ddd; }
+  .tab button.active { background-color: #ccc; }
+  .tabcontent { display: none; padding: 6px 12px; border: 1px solid #ccc; border-top: none; }
+  .review-section { display: none; padding: 20px; border: 1px solid #ccc; margin-top: 20px; }
+  .back-button { margin-top: 10px; cursor: pointer; color: blue; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h2>Date Night Cinema Movie Reviews</h2>
+<p>Here we bring you the best movie / TV show recommendations from all genres and eras for your perfect date night.</p>
+
+<!-- Tabs for Genres -->
+<div class="tab">
+ <button class="tablinks" onclick="showGenre(event, 'Action')">Action</button>
+  <button class="tablinks" onclick="showGenre(event, 'Action')">Action</button>
+  <button class="tablinks" onclick="showGenre(event, 'Thriller')">Thriller</button>
+  <button class="tablinks" onclick="showGenre(event, 'Comedy')">Comedy</button>
+  <button class="tablinks" onclick="showGenre(event, 'Stand-up-Comedy')">Stand-Up Comedy</button>
+  <button class="tablinks" onclick="showGenre(event, 'Drama')">Drama</button>
+</div>
+
+<!-- Movie Lists for Each Genre -->
+<!-- ACTION -->
+<div id="Action" class="tabcontent">
+  <h3><a href="#" onclick="loadReview('Action', 'con-air')">Con Air</a></h3>
+  <h3><a href="#" onclick="loadReview('Action', 'shogun')">Shogun</a></h3>
+  <h3><a href="#" onclick="loadReview('Action', 'the-woman-king')">The Woman King</a></h3>
+  <h3><a href="#" onclick="loadReview('Action', 'mr-and-mrs-smith')">Mr & Mrs Smith</a></h3>
+</div>
+
+<!-- THRILLER -->
+<div id="Thriller" class="tabcontent">
+  <h3><a href="#" onclick="loadReview('Thriller', 'law-abiding-citizen')">Law Abiding Citizen</a></h3>
+  <h3><a href="#" onclick="loadReview('Thriller', 'swarm')">Swarm</a></h3>
+<h3><a href="#" onclick="loadReview('Thriller', 'nope')">Nope</a></h3>
+</div>
+
+<!-- COMEDY -->
+
+<div id="Comedy" class="tabcontent">
+  <h3><a href="#" onclick="loadReview('Comedy', 'the-book-of-clarence')">The Book of Clarence</a></h3>
+  <h3><a href="#" onclick="loadReview('Comedy', 'beef')">Beef</a></h3>
+  <h3><a href="#" onclick="loadReview('Comedy', 'how-to-die-alone')">How to Die Alone</a></h3>
+</div>
+
+
+<!-- STANDUP -->
+<div id="Stand-up-Comedy" class="tabcontent">
+  <h3><a href="#" onclick="loadReview('Stand-up-Comedy', 'i-wish-you-would')">Trevor Noah: I Wish You Would</a></h3>
+</div>
+
+<!-- DRAMA -->
+<div id="Drama" class="tabcontent">
+  <h3><a href="#" onclick="loadReview('Drama', 'accused')">Accused</a></h3>
+ 
+</div>
+
+<!-- Review Section (Initially Hidden) -->
+<div id="review-section" class="review-section">
+  <h2 id="review-title"></h2>
+  <p id="review-content"></p>
+  <p class="back-button" onclick="goBack()">⬅ Back to Movie List</p>
+</div>
+
+<script>
+  function showGenre(evt, genre) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(genre).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  // Movie reviews for all genres
+  const reviews = {
+    "Action": {
+      "con-air": {
+        title: "Con Air (Movie)",
+        content: "Fran: (7/10) Indestructible heroes ✔️, one liner after a kill ✔️, explosion everywhere ✔️, and endless ammo ✔️. All those tropes contribute to the exaggerated over the top action in this movie. I really enjoyed the fast cut and comedic tone of the movie. Dave Chapelle was a surprise cast that lite up the movie for me. There’s a few racist and sexist remarks that would not fly in 2024 but this was a 1997 movie. I lost count of how many laws of physics were broken throughout the movie. I would highly recommend if you looking for a fun movie night where the plot does not need to make sense.<br><br> Cee: (7/10) Just released from prison, Cameron Poe is one flight away from his family. What Cameron doesn’t know is that other criminals on the flight are planning their escape. Cameron must use his wits to get home safely. The movie has great banter between the characters. The action scenes are fun. Perfect film for movie night."
+      },
+      "shogun": {
+        title: "Shogun - (TV-Show)",
+        content: "Cee:(8/10) - Shogun details the world of lords battling for power in the 1600s. The show transports you into Japan with its stunning set design. The characters mesh well with one another. The plotline moved steadily. I loved the intensity mixed with slight romance. Shogun will leave you wanting more.<br> <br>Fran:(7/10) - The show was very intense and filled with drama. I really liked the fact that the language spoken in the show was Japanese and for the Portuguese it was English so the audience could understand. I did struggle to keep up with the English subs as the actors spoke fast. If you have a hard time keeping your attention like me then Id recommend watching the English dub. Overall great show and would recommend."
+      },
+      "the-woman-king": {
+        title: "The Woman King - (Movie)",
+        content: "Cee: (8/10) - Fearless warrior Nanisca trains her all female army against enemies. The movie combines teamwork, friendship, and survival into a powerful story. The costumes and architecture transport you to the African Kindgom of Dahomey. This is a great movie to watch leaving you inspired.<br> <br>Fran:(8/10) - The writers crafted a compelling and well written piece about The Kingdom of Dahomey from the 18th and 19th century. The action scenes were intense and visually stunning. And I cant forget about Viola Davis amazing acting to bring it all together." 
+        },
+        "mr-and-mrs-smith": {
+        title: "Mr & Mrs Smith - (Movie)",
+        content: "Fran:(6/10) - The movie was shallow. The story took a while to develop which lead to a runtime of 2 hours. I feel like the first hour of the movie was just fillers to pad that long runtime. I would recommend only if you like Brad Pitt and Angelina Jolie.<br> <br>Cee:(6/10) The movie that created the one of the biggest power couples was actually a flop? This action thriller has a slow start. Although the two hot stars have chemistry and plenty of action scenes it does not save the movies plot lines. This movie is best to watch for background noise." 
+        }
+      
+      
+    },
+    
+    
+    "Thriller": {
+      "law-abiding-citizen": {
+        title: "Law Abiding Citizen (Movie)",
+        content: "Fran:(8/10) - The movie had me hooked from the very beginning with a gruesome start that set the tone for the entire film. The main focus of the movie is on the unfairness of the Justice system on how they prosecute crime. I would recommend watching this movie if you in the mood for a some psycho thriller with an underlaying message. <br><br>Cee:(7/10) How far would you go to get justice for your family? Clyde Shelton hunts the criminal system to prove his point. The action based movie kept my attention all the way through the ending credits. Towards the end it seems like the deaths are overkill. If you want a thought provoking movie look no further."
+      },
+      "swarm": {
+        title: "Swarm",
+        content: "Cee:(8/10) Dre loves superstar Ni’jah. She goes across the country defending Ni’jah’s honor. The show is a hypothetical deep dive on parasocial relationships. It makes to think how far would you go to protect your favorite celebrity?<br><br>Fran:(8/10) Definitely one of my fav show from 2023. You will be hook from the beginning with Dre weird behavior and obsession with Beyonce, I mean Nijah. Which leads her to going over the top."
+      },
+      "nope": {
+        title: "Nope (Movie)",
+        content: "Fran:(8/10) Another one of Jordan Peele movies. The movies main theme is on domesticating wild animals. There were some part of the movie that was confusing but audiences left with their own interpretation <br><br> Cee:(7/10) Jordan Peele dives into western themes in NOPE. On the surface Nope seems like a movie about aliens but with deeper inspection the theme is exploitation of animals. The horses, chimpanzee and alien are all being domesticated by humans for profit. These animals show us wild creatures are not meant to be in Hollywood."
+      }
+    },
+    
+    
+    "Comedy": {
+      "the-book-of-clarence": {
+        title: "The Book of Clarence (Movie)",
+        content: "Fran: (6/10) “Disappointment” would be one word to describe it. The story begin well, establishing the setting effectively, but as the movie progress, numerous plot hole emerged, leaving you puzzled. LaKeith is a wonderful actor and he was the main reason why I gave the movie a try. He has more impressive work in Atlanta and Sorry to Bother You.<br><br>Cee: (6/10) This fictional biblical story follows Clarence, a man down on his luck. To help his sick mother, Clarence schemes to become the new messiah to earn money. Clarence quickly learns he has enemies hoping for his downfall. He learns to find faith in his new role. The movie diverts from the comedy/ action themes and becomes more heavy towards the end. It became difficult to watch and left more questions than answers."
+      },
+      "beef": {
+        title: "Beef (TV-Show)",
+        content: "Cee: (7/10) A road rage incident intertwined two strangers together. Amy and Danny are both at their boiling points in their lives and use their spite to get back at one another. The show falls off the deep end in the last few episodes. A reminder to maybe lay off your car horn. <br><br>Fran: (7/10) We all been there the plot of the show centers around a road range incident which leads to many other events occurring. The show had time where it felt like it was being repetitive but the heartfelt moments made up for it. Looking forward to season two to drop."
+      },
+      "how-to-die-alone": {
+        title: "How to Die Alone (Movie)",
+        content: "Cee: (9/10) After a near death experience, Mel sets out to change her life. Natasha shines as the main character delivering complex emotions. The show reminds its viewers people are capable of change and should strive for it. Can’t wait for season 2.<br><br>Fran: (8/10) One of my favorite shows from this year. Natasha Rothwell was great in Insecure but it was amazing to see her in a leading role. I like the concept of the show on playing with her fear on dying alone. And this sets the stone for her to begin making some changes in her life. The ending was unexpected, Im looking forward to S2 🤞🏾."
+      }
+    },
+    "Stand-up-Comedy": {
+      "i-wish-you-would": {
+        title: "Trevor Noah: I Wish You Would (Stand Up)",
+        content: "Fran: Trevor Noah: (8/10) This was pretty funny, it was interesting to learn about Trevor Noah bi-racial identity of being South African and Germans in a humors tone. <br><br>Cee: (8/10)  What if every wish you wanted came true? Trevor breaks down the most common wishes that have come true over the past few years. He mixes it in with stories all over the world. A light comedy to brighten your day."
+      }
+      
+      
+    },
+    "Drama": {
+      "accused": {
+        title: "Accused - S1 (TV-Show)",
+        content: "Cee: (7/10) This anthology series focuses on people accused of various crimes. The episodes shift from the past and present to form a conclusion. For season two I’d like a variety of crimes not just murder.<br><br>Fran: (7/10) The show took a look at different legal cases on individual and delves into the motivations that lead to them committing the crime. I thought some cases needed more than one episode to be fully examined."
+      }
+      },
+      
+  };
+
+  // Function to load review dynamically
+  function loadReview(genre, movieKey) {
+    const reviewSection = document.getElementById("review-section");
+    const reviewTitle = document.getElementById("review-title");
+    const reviewContent = document.getElementById("review-content");
+
+    if (reviews[genre] && reviews[genre][movieKey]) {
+      reviewTitle.textContent = reviews[genre][movieKey].title;
+      reviewContent.innerHTML = reviews[genre][movieKey].content; //to allow line breaks
+    } else {
+      reviewTitle.textContent = "Review Not Found";
+      reviewContent.textContent = "Sorry, we couldn't find a review for this movie.";
+    }
+
+    // Hide genre list and show review
+    document.querySelectorAll(".tabcontent").forEach(el => el.style.display = "none");
+    reviewSection.style.display = "block";
+  }
+
+  function goBack() {
+    document.getElementById("review-section").style.display = "none";
+    document.getElementsByClassName("tablinks")[0].click();
+  }
+
+  document.getElementsByClassName("tablinks")[0].click();
+</script>
+
+</body>
+</html>
